@@ -22,6 +22,5 @@
       "src": "/(.*)",
       "dest": "/frontend/dist/frontend/browser/index.html"
     }
-  ],
-
+  ]
 }
