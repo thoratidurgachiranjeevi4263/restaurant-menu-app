@@ -7,13 +7,16 @@ const path = require("path");
 
 const app = express();
 
-// CORS configuration
+// CORS configuration - allow all origins for now
 app.use(cors({
-  origin: process.env.NODE_ENV === 'production' 
-    ? ['https://res-menu-6.onrender.com', 'https://restaurant-menu-frontend.onrender.com', 'https://your-actual-frontend-url.onrender.com']
-    : ['http://localhost:4200', 'http://localhost:3000'],
-  credentials: true
+  origin: true,
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
+
+// Add preflight handling
+app.options('*', cors());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
