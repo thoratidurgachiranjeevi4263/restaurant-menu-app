@@ -1,4 +1,4 @@
-require('dotenv').config({ path: '../.env' });
+require('dotenv').config();
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -30,20 +30,9 @@ app.get('/health', (req, res) => {
 const itemRoutes = require("./routes/item.routes");
 app.use("/api/items", itemRoutes);
 
-// Serve static files from Angular build
-const frontendPath = path.join(__dirname, '../frontend/dist/frontend');
-const browserPath = path.join(frontendPath, 'browser');
-
-// Check if browser folder exists, fallback to main dist folder
-const staticPath = require('fs').existsSync(browserPath) ? browserPath : frontendPath;
-app.use(express.static(staticPath));
-
-// Serve Angular app for all non-API routes
-app.get('*', (req, res) => {
-  if (!req.url.startsWith('/api')) {
-    const indexPath = path.join(staticPath, 'index.html');
-    res.sendFile(indexPath);
-  }
+// Root endpoint
+app.get('/', (req, res) => {
+  res.json({ message: 'Restaurant Menu API is running!' });
 });
 
 // MongoDB Atlas connection
