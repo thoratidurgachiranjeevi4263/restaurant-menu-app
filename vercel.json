@@ -20,7 +20,8 @@
     },
     {
       "src": "/(.*)",
-      "dest": "/frontend/dist/frontend/browser/index.html"
+      "dest": "/frontend/$1"
     }
-  ]
+  ],
+  "outputDirectory": "frontend/dist/frontend/browser"
 }
