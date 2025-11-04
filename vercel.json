@@ -20,11 +20,8 @@
     },
     {
       "src": "/(.*)",
-      "dest": "/frontend/dist/frontend/browser/$1"
+      "dest": "/frontend/dist/frontend/browser/index.html"
     }
   ],
-  "env": {
-    "MONGODB_URI": "@mongodb_uri",
-    "NODE_ENV": "production"
-  }
+
 }
